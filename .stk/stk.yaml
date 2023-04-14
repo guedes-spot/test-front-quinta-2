@@ -1,0 +1,29 @@
+schema-version: v1
+kind: manifest
+metadata:
+  name: random-name-again
+  description: random-name-again
+  stack-version-id: 01GXY76QAXP79KHS16T03WZ6XA
+spec:
+  type: infra
+  plugins:
+    - name: test/managed-runtime/rds@0.0.11
+      plugin-version-id: 01GXXXB58ESSTDFAF8GRRSZJHE
+      type: infra
+      inputs:
+        db_name: namedb
+        storage: 256MiB
+        max_storage: 256MiB
+        environment: Sandbox
+        tribe: Stacks
+        vpc_name: vpc
+        cidrs: 192.168.100.100
+        instance_type: db.t3.small
+        aws_rds_conn__CONNECTOR: guedes-conn
+      inputs-envs: {}
+      connectors:
+        - name: guedes-conn
+          type: aws-rds-conn
+  global-inputs: {}
+  global-computed-inputs: {}
+  repository: https://github.com/guedes-spot/test-front-quinta-2
